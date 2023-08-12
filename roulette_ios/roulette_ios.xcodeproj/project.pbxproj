@@ -13,6 +13,7 @@
 		8ED6FBBA2A8797A600F4C1AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6FBB82A8797A600F4C1AC /* Main.storyboard */; };
 		8ED6FBBC2A8797A700F4C1AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6FBBB2A8797A700F4C1AC /* Assets.xcassets */; };
 		8ED6FBBF2A8797A700F4C1AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6FBBD2A8797A700F4C1AC /* LaunchScreen.storyboard */; };
+		8ED6FBC82A87996A00F4C1AC /* SimpleRoulette in Frameworks */ = {isa = PBXBuildFile; productRef = 8ED6FBC72A87996A00F4C1AC /* SimpleRoulette */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8ED6FBC82A87996A00F4C1AC /* SimpleRoulette in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +85,9 @@
 			dependencies = (
 			);
 			name = roulette_ios;
+			packageProductDependencies = (
+				8ED6FBC72A87996A00F4C1AC /* SimpleRoulette */,
+			);
 			productName = roulette_ios;
 			productReference = 8ED6FBAF2A8797A600F4C1AC /* roulette_ios.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +116,9 @@
 				Base,
 			);
 			mainGroup = 8ED6FBA62A8797A600F4C1AC;
+			packageReferences = (
+				8ED6FBC62A87996A00F4C1AC /* XCRemoteSwiftPackageReference "SimpleRoulette" */,
+			);
 			productRefGroup = 8ED6FBB02A8797A600F4C1AC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -358,6 +366,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8ED6FBC62A87996A00F4C1AC /* XCRemoteSwiftPackageReference "SimpleRoulette" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/fummicc1/SimpleRoulette.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8ED6FBC72A87996A00F4C1AC /* SimpleRoulette */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8ED6FBC62A87996A00F4C1AC /* XCRemoteSwiftPackageReference "SimpleRoulette" */;
+			productName = SimpleRoulette;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8ED6FBA72A8797A600F4C1AC /* Project object */;
 }
