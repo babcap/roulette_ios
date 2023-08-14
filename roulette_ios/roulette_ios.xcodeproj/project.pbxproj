@@ -9,22 +9,31 @@
 /* Begin PBXBuildFile section */
 		8ED6FBB32A8797A600F4C1AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6FBB22A8797A600F4C1AC /* AppDelegate.swift */; };
 		8ED6FBB52A8797A600F4C1AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6FBB42A8797A600F4C1AC /* SceneDelegate.swift */; };
-		8ED6FBB72A8797A600F4C1AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6FBB62A8797A600F4C1AC /* ViewController.swift */; };
+		8ED6FBB72A8797A600F4C1AC /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6FBB62A8797A600F4C1AC /* GameViewController.swift */; };
 		8ED6FBBA2A8797A600F4C1AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6FBB82A8797A600F4C1AC /* Main.storyboard */; };
 		8ED6FBBC2A8797A700F4C1AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6FBBB2A8797A700F4C1AC /* Assets.xcassets */; };
 		8ED6FBBF2A8797A700F4C1AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6FBBD2A8797A700F4C1AC /* LaunchScreen.storyboard */; };
-		8ED6FBC82A87996A00F4C1AC /* SimpleRoulette in Frameworks */ = {isa = PBXBuildFile; productRef = 8ED6FBC72A87996A00F4C1AC /* SimpleRoulette */; };
+		8ED6FBCA2A89399900F4C1AC /* DefaultBetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6FBC92A89399900F4C1AC /* DefaultBetCollectionViewCell.swift */; };
+		8ED6FBCE2A89483B00F4C1AC /* CustomCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6FBCD2A89483B00F4C1AC /* CustomCollectionViewFlowLayout.swift */; };
+		8ED6FBD02A897B2900F4C1AC /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6FBCF2A897B2900F4C1AC /* GameViewModel.swift */; };
+		8EF29F672A8A99EB009207CF /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF29F662A8A99EB009207CF /* UIColor+Extensions.swift */; };
+		8EF29F692A8AE05A009207CF /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF29F682A8AE05A009207CF /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8ED6FBAF2A8797A600F4C1AC /* roulette_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = roulette_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6FBB22A8797A600F4C1AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6FBB42A8797A600F4C1AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8ED6FBB62A8797A600F4C1AC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8ED6FBB62A8797A600F4C1AC /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		8ED6FBB92A8797A600F4C1AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8ED6FBBB2A8797A700F4C1AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8ED6FBBE2A8797A700F4C1AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8ED6FBC02A8797A700F4C1AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8ED6FBC92A89399900F4C1AC /* DefaultBetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBetCollectionViewCell.swift; sourceTree = "<group>"; };
+		8ED6FBCD2A89483B00F4C1AC /* CustomCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		8ED6FBCF2A897B2900F4C1AC /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		8EF29F662A8A99EB009207CF /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		8EF29F682A8AE05A009207CF /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,7 +41,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8ED6FBC82A87996A00F4C1AC /* SimpleRoulette in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,7 +68,12 @@
 			children = (
 				8ED6FBB22A8797A600F4C1AC /* AppDelegate.swift */,
 				8ED6FBB42A8797A600F4C1AC /* SceneDelegate.swift */,
-				8ED6FBB62A8797A600F4C1AC /* ViewController.swift */,
+				8ED6FBB62A8797A600F4C1AC /* GameViewController.swift */,
+				8ED6FBCF2A897B2900F4C1AC /* GameViewModel.swift */,
+				8EF29F682A8AE05A009207CF /* Models.swift */,
+				8ED6FBC92A89399900F4C1AC /* DefaultBetCollectionViewCell.swift */,
+				8ED6FBCD2A89483B00F4C1AC /* CustomCollectionViewFlowLayout.swift */,
+				8EF29F662A8A99EB009207CF /* UIColor+Extensions.swift */,
 				8ED6FBB82A8797A600F4C1AC /* Main.storyboard */,
 				8ED6FBBB2A8797A700F4C1AC /* Assets.xcassets */,
 				8ED6FBBD2A8797A700F4C1AC /* LaunchScreen.storyboard */,
@@ -86,7 +99,6 @@
 			);
 			name = roulette_ios;
 			packageProductDependencies = (
-				8ED6FBC72A87996A00F4C1AC /* SimpleRoulette */,
 			);
 			productName = roulette_ios;
 			productReference = 8ED6FBAF2A8797A600F4C1AC /* roulette_ios.app */;
@@ -146,8 +158,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8ED6FBB72A8797A600F4C1AC /* ViewController.swift in Sources */,
+				8ED6FBD02A897B2900F4C1AC /* GameViewModel.swift in Sources */,
+				8ED6FBCA2A89399900F4C1AC /* DefaultBetCollectionViewCell.swift in Sources */,
+				8ED6FBB72A8797A600F4C1AC /* GameViewController.swift in Sources */,
+				8EF29F692A8AE05A009207CF /* Models.swift in Sources */,
 				8ED6FBB32A8797A600F4C1AC /* AppDelegate.swift in Sources */,
+				8EF29F672A8A99EB009207CF /* UIColor+Extensions.swift in Sources */,
+				8ED6FBCE2A89483B00F4C1AC /* CustomCollectionViewFlowLayout.swift in Sources */,
 				8ED6FBB52A8797A600F4C1AC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,14 +394,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		8ED6FBC72A87996A00F4C1AC /* SimpleRoulette */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8ED6FBC62A87996A00F4C1AC /* XCRemoteSwiftPackageReference "SimpleRoulette" */;
-			productName = SimpleRoulette;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8ED6FBA72A8797A600F4C1AC /* Project object */;
 }
