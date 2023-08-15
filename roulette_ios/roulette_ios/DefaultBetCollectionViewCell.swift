@@ -34,7 +34,7 @@ class DefaultBetCollectionViewCell: UICollectionViewCell {
 
     func setup(with variant: BetVariant) {
         self.label.text = variant.betString
-        self.backgroundColor =
+        self.backgroundColor = variant.color.color()
     }
 }
 

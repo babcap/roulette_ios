@@ -11,66 +11,33 @@ import UIKit
 
 class GameViewModel {
     var balance: Int = 0
-    let gameSectors = RouletteSector.defaultGame()
-    let availableBets: [[BetVariant]] = [
-        [
-            BetVariant(type: .number(0))
-        ],
-        [
-            BetVariant(type: .number(0)),
-            BetVariant(type: .number(1)),
-            BetVariant(type: .number(2)),
-            BetVariant(type: .number(3)),
-            BetVariant(type: .number(4)),
-            BetVariant(type: .number(5)),
-            BetVariant(type: .number(6)),
-            BetVariant(type: .number(7)),
-            BetVariant(type: .number(8)),
-            BetVariant(type: .number(9)),
-            BetVariant(type: .number(10)),
-            BetVariant(type: .number(11)),
-            BetVariant(type: .number(12)),
-            BetVariant(type: .number(13)),
-            BetVariant(type: .number(14)),
-            BetVariant(type: .number(15)),
-            BetVariant(type: .number(16)),
-            BetVariant(type: .number(17)),
-            BetVariant(type: .number(18)),
-            BetVariant(type: .number(19)),
-            BetVariant(type: .number(20)),
-            BetVariant(type: .number(21)),
-            BetVariant(type: .number(22)),
-            BetVariant(type: .number(23)),
-            BetVariant(type: .number(24)),
-            BetVariant(type: .number(25)),
-            BetVariant(type: .number(26)),
-            BetVariant(type: .number(27)),
-            BetVariant(type: .number(28)),
-            BetVariant(type: .number(29)),
-            BetVariant(type: .number(30)),
-            BetVariant(type: .number(31)),
-            BetVariant(type: .number(32)),
-            BetVariant(type: .number(33)),
-            BetVariant(type: .number(34)),
-            BetVariant(type: .number(35)),
-            BetVariant(type: .number(36)),
-        ],
-        [
-            BetVariant(type: .first12),
-            BetVariant(type: .second12),
-            BetVariant(type: .third12)
-        ],
-        [
-            BetVariant(type: .range(SectorRangeConstants.start18)),
-            BetVariant(type: .even),
-            BetVariant(type: .color(.red)),
-            BetVariant(type: .color(.black)),
-            BetVariant(type: .odd),
-            BetVariant(type: .range(SectorRangeConstants.end18)),
-        ],
-        
-    ]
-    
+    let gameSectors = RouletteSector.sectorsArray
+
+    var  availableBets: [[BetVariant]] = {
+        let firstSection = [
+            BetVariant(type: .number(0), color: .green)
+        ]
+        let secondSection: [BetVariant] = RouletteSector.sectorsArray.sorted(by: { $0 < $1 }).compactMap {
+            guard $0.number != 0 else { return nil
+            }
+            return BetVariant(type: .number($0.number), color: $0.color)
+        }
+        let thirdSection = [
+            BetVariant(type: .first12, color: .green),
+            BetVariant(type: .second12, color: .green),
+            BetVariant(type: .third12, color: .green)
+        ]
+        let fourthSection = [
+            BetVariant(type: .range(SectorRangeConstants.start18), color: .green),
+            BetVariant(type: .even, color: .green),
+            BetVariant(type: .color(.red), color: .red),
+            BetVariant(type: .color(.black), color: .black),
+            BetVariant(type: .odd, color: .green),
+            BetVariant(type: .range(SectorRangeConstants.end18), color: .green),
+        ]
+        return [firstSection, secondSection, thirdSection, fourthSection]
+    }()
+
     var selectedBet: Bet?
 
     func getRandomSector() {
