@@ -12,7 +12,7 @@ import UIKit
 class GameViewModel {
     var balance: Int = 0
     let gameSectors = RouletteSector.sectorsArray
-
+    
     var  availableBets: [[BetVariant]] = {
         let firstSection = [
             BetVariant(type: .number(0), color: .green)
@@ -37,54 +37,60 @@ class GameViewModel {
         ]
         return [firstSection, secondSection, thirdSection, fourthSection]
     }()
-
-    var selectedBet: Bet?
-
-    func getRandomSector() {
+    
+    func startGame(stepCount: Int, and indexPath: IndexPath, completion: (RouletteSector) -> Void) {
+        guard var betVariant = self.getBetVariant(for: indexPath) else { return }
+        betVariant.amount = balance/10 * stepCount
         guard let selectedSector = self.gameSectors.randomElement() else {
             debugPrint("Error")
             return
         }
-        
-        balance += self.handleWinning(for: selectedSector)
+        self.balance += self.handleWinning(for: selectedSector, betVariant: betVariant)
     }
 
-    func handleWinning(for sector: RouletteSector) -> Int {
-        var totalWinning = 0
-        guard let bet = selectedBet else { return 0 }
+    private func getBetVariant(for indexPath: IndexPath) -> BetVariant? {
+        guard indexPath.section <= availableBets.count,
+              indexPath.row <= availableBets[indexPath.section].count else { return nil }
+        let variant = availableBets[indexPath.section][indexPath.row]
+        return variant
+    }
 
-        switch bet.type {
+    func handleWinning(for sector: RouletteSector, betVariant: BetVariant) -> Int {
+        var totalWinning = 0
+        guard let amount = betVariant.amount else { return 0 }
+
+        switch betVariant.type {
         case .color(let color):
             if sector.color == color {
-                totalWinning = bet.amount * 2
+                totalWinning = amount * 2
             }
         case .number(let number):
             if sector.number == number {
-                totalWinning = bet.amount * 37
+                totalWinning = amount * 37
             }
         case .range(let range):
             if range.contains(sector.number) {
-                totalWinning = bet.amount * 19
+                totalWinning = amount * 19
             }
         case .even:
             if sector.number != 0, sector.number % 2 == 0 {
-                totalWinning = bet.amount * 2
+                totalWinning = amount * 2
             }
         case .odd:
             if sector.number != 0, sector.number % 2 != 0 {
-                totalWinning = bet.amount * 2
+                totalWinning = amount * 2
             }
         case .first12, .second12, .third12:
             var range: Range<Int> = .init(uncheckedBounds: (lower: 0, upper: 0))
             
-            switch bet.type {
+            switch betVariant.type {
             case .first12: range = SectorRangeConstants.first12
             case .second12: range = SectorRangeConstants.second12
             case .third12: range = SectorRangeConstants.third12
             default: break
             }
             if range.contains(sector.number) {
-                totalWinning = bet.amount * 3
+                totalWinning = amount * 3
             }
         }
         return totalWinning

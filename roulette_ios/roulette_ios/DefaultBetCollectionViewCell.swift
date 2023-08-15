@@ -9,6 +9,12 @@ import UIKit
 
 class DefaultBetCollectionViewCell: UICollectionViewCell {
     static let identifier = "CustomCell"
+
+    override var isSelected: Bool {
+        didSet {
+            self.layer.borderColor = isSelected ? UIColor.blue.cgColor : UIColor.white.cgColor
+        }
+    }
     
     let label: UILabel = {
         let label = UILabel()
@@ -37,8 +43,3 @@ class DefaultBetCollectionViewCell: UICollectionViewCell {
         self.backgroundColor = variant.color.color()
     }
 }
-
-//struct Bet {
-//    let amount: Int
-//    let color: UIColor
-//}

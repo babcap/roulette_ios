@@ -10,53 +10,35 @@ import UIKit
 class GameViewController: UIViewController {
 
     @IBOutlet private weak var rouletteView: UIView!
-    
     @IBOutlet private weak var collectionView: UICollectionView!
-    
+    @IBOutlet private weak var stepper: UIStepper!
+    @IBOutlet private weak var betTitleLabel: UILabel!
+    @IBOutlet private weak var betCountLabel: UILabel!
+
     let reuseIdentifier = "cell"
-    var items: [BetType] = [BetType]()
-    var selectedBets: [Bet] = [Bet]()
     private let output = GameViewModel()
+    private var selectedCellIndexPath: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.items = self.output.gameSectors
-            .sorted(by: { $0 < $1 })
-            .map({ BetType.number($0.number)})
-        
+
+        self.setupStepperView()
         self.setupCollectionView()
         self.setupCollectionViewFlowLayout()
-//        self.setupAdditionalButtons()
     }
 
-//    private func setupAdditionalButtons() {
-//        let buttonsArray = [first12Button, second12Button, third12Button, till18Button, evenButton, redButton, blackButton, oddButton, from19To36Button]
-//        buttonsArray.forEach {
-//            $0?.titleLabel?.textColor = .white
-////            $0?.titleLabel?.transform = CGAffineTransform(rotationAngle: (CGFloat.pi / 2))
-//            $0?.layer.borderColor = UIColor.white.cgColor
-//            $0?.layer.borderWidth = 1
-//
-//            switch $0 {
-//            case blackButton:
-//                $0?.backgroundColor = .black
-//            case redButton:
-//                $0?.backgroundColor = .red
-//            default:
-//                $0?.backgroundColor = .green
-//            }
-//        }
-//        self.first12Button.titleLabel?.text = "1st 12"
-//        self.second12Button.titleLabel?.text = "2nd 12"
-//        self.third12Button.titleLabel?.text = "3rd 12"
-//        self.till18Button.titleLabel?.text = "1-18"
-//        self.evenButton.titleLabel?.text = "Even"
-//        self.redButton.titleLabel?.text = "Red"
-//        self.blackButton.titleLabel?.text = "Black"
-//        self.oddButton.titleLabel?.text = "Odd"
-//        self.from19To36Button.titleLabel?.text = "19-36"
-//    }
+    private func setupStepperView() {
+        self.setupStepper()
+        self.betTitleLabel.text = "BET"
+        self.betCountLabel.text = "\(Int(self.stepper.value))"
+    }
+
+    private func setupStepper() {
+        stepper.minimumValue = 1.0
+        stepper.maximumValue = 10.0
+        stepper.value = 0
+        stepper.autorepeat = false
+    }
 
     private func setupCollectionView() {
         self.collectionView.register(DefaultBetCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -70,6 +52,15 @@ class GameViewController: UIViewController {
         self.collectionView?.collectionViewLayout = layout
     }
 
+    @IBAction private func onStepperChanged(_ sender: Any) {
+        self.betCountLabel.text = "\(Int(self.stepper.value))"
+    }
+
+    @IBAction private func onStartButton(_ sender: Any) {
+        guard let indexPath = self.selectedCellIndexPath else { return }
+        self.output.startGame(stepCount: Int(self.stepper.value), and: indexPath)
+    }
+    
 }
 
 extension GameViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -87,6 +78,10 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
         cell.setup(with: betVariant)
 
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
     }
 }
 

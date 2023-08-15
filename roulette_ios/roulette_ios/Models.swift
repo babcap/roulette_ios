@@ -48,6 +48,7 @@ struct Bet {
 struct BetVariant {
     let type: BetType
     let color: RouletteColor
+    var amount: Int?
 
     var betString: String {
         var resultString = ""
