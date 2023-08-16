@@ -9,11 +9,17 @@ import UIKit
 
 class GameViewController: UIViewController {
 
+    @IBOutlet private weak var profileView: UIView!
+    @IBOutlet private weak var profileNameLabel: UILabel!
+    @IBOutlet private weak var balanceLabel: UILabel!
     @IBOutlet private weak var rouletteView: UIView!
+    @IBOutlet private weak var rouletteLabel: UILabel!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var stepper: UIStepper!
+    @IBOutlet private weak var betView: UIView!
     @IBOutlet private weak var betTitleLabel: UILabel!
     @IBOutlet private weak var betCountLabel: UILabel!
+    @IBOutlet private weak var startButton: UIButton!
 
     let reuseIdentifier = "cell"
     private let output = GameViewModel()
@@ -23,14 +29,38 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         self.output.delegate = self
 
-        self.setupStepperView()
-        self.setupCollectionView()
-        self.setupCollectionViewFlowLayout()
+        self.setupUI()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.output.updateBalance()
+    }
+
+    private func setupUI() {
+        self.view.backgroundColor = .darkGray
+        self.setupRouletteView(with: RouletteSector(number: 0, color: .green))
+        self.setupStepperView()
+        self.setupBetView()
+        self.setupProfileViewView()
+        self.setupCollectionView()
+        self.setupCollectionViewFlowLayout()
+    }
+
+    private func setupProfileViewView() {
+        self.profileView.layer.cornerRadius = 12
+        self.profileView.layer.borderColor = UIColor.yellow.cgColor
+        self.profileView.layer.borderWidth = 3
+    }
+
+    private func setupBetView() {
+        self.betView.layer.cornerRadius = 12
+        self.betView.backgroundColor = RouletteColor.green.color()
+        self.betView.layer.borderColor = UIColor.yellow.cgColor
+        self.betView.layer.borderWidth = 3
+        self.startButton.setTitle("Start", for: .normal)
+        self.startButton.setTitleColor(.black, for: .normal)
+        self.startButton.tintColor = .cyan
     }
 
     private func setupStepperView() {
@@ -57,6 +87,11 @@ class GameViewController: UIViewController {
         self.collectionView?.collectionViewLayout = layout
     }
 
+    private func setupRouletteView(with sector: RouletteSector) {
+        self.rouletteView.backgroundColor = sector.color.color()
+        self.rouletteLabel.text = "\(sector.number)"
+    }
+
     @IBAction private func onStepperChanged(_ sender: Any) {
         self.betCountLabel.text = "\(Int(self.stepper.value))"
     }
@@ -64,7 +99,7 @@ class GameViewController: UIViewController {
     @IBAction private func onStartButton(_ sender: Any) {
         guard let indexPath = self.selectedCellIndexPath else { return }
         self.output.startGame(stepCount: Int(self.stepper.value), and: indexPath) { sector in
-            
+            self.setupRouletteView(with: sector)
         }
     }
 }
@@ -101,9 +136,10 @@ extension GameViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension GameViewController: GameViewModelDelegate {
-    func updateView(balance: Int) {
+    func updateView(model: UserModel) {
         DispatchQueue.main.async {
-            self.betTitleLabel.text = "\(balance)"
+            self.profileNameLabel.text = model.name
+            self.balanceLabel.text = "\(model.balance)"
         }
     }
 }

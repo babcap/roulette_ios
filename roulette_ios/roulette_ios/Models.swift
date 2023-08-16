@@ -49,6 +49,10 @@ struct UserModel: Encodable, Decodable {
     var name = "Anonymus"
     var uid: String
     var balance: Int
+
+    static func empty() -> UserModel {
+        return UserModel(uid: "Anonymus", balance: 0)
+    }
 }
 
 struct BetVariant {

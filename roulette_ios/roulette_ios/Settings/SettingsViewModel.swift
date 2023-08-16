@@ -37,7 +37,7 @@ class SettingsViewModel {
     ]
 
     func handleActionAt(_ indexPath: IndexPath) {
-        let setting = settings[indexPath.row]
+        let setting = settings[indexPath.section]
         self.handleAction(setting.action)
     }
 
@@ -50,9 +50,11 @@ class SettingsViewModel {
         switch action {
         case .signIn:
             AuthenticationManager.shared.anonymus() { user, error in
-                guard let user = user, let userModel = DatabaseManager.shared.writeUser(uid: user.uid) else { return }
+                guard let user = user, let userModel = DatabaseManager.shared.writeUser(uid: user.uid) else {
+                    self.delegate.updateView(with: nil)
+                    return
+                }
                 self.delegate.updateView(with: userModel)
-                
             }
         case .rateApp:
             SKStoreReviewController.requestReviewInCurrentScene()

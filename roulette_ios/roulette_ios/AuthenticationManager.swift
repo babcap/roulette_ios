@@ -36,7 +36,9 @@ class AuthenticationManager {
                     if let userModel = userModel {
                         handler(userModel, nil)
                     } else {
-                        DatabaseManager.shared.writeUser(uid: user.uid)
+                        if let userModel = DatabaseManager.shared.writeUser(uid: user.uid) {
+                            handler(userModel, nil)
+                        }
                     }
                 }
             }

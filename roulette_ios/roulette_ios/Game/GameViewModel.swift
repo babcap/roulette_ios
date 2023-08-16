@@ -8,7 +8,7 @@
 import Foundation
 
 protocol GameViewModelDelegate: NSObject {
-    func updateView(balance: Int)
+    func updateView(model: UserModel)
 }
 
 class GameViewModel {
@@ -16,6 +16,7 @@ class GameViewModel {
 
     var balance: Int = 0
     let gameSectors = RouletteSector.sectorsArray
+    private var userModel: UserModel?
     
     var  availableBets: [[BetVariant]] = {
         let firstSection = [
@@ -47,7 +48,8 @@ class GameViewModel {
             DatabaseManager.shared.getUser(uid: user.uid) { userModel in
                 guard let userModel = userModel else { return }
                 self.balance = userModel.balance
-                self.delegate.updateView(balance: self.balance)
+                self.userModel = userModel
+                self.delegate.updateView(model: userModel)
             }
         }
     }
@@ -62,10 +64,16 @@ class GameViewModel {
         }
         self.balance -= betAmount
         self.balance += self.handleWinning(for: selectedSector, betVariant: betVariant)
+        self.userModel?.balance = self.balance
+        
+        if self.balance == 0 {
+            self.balance += 100
+        }
         if let user = AuthenticationManager.shared.isLoggedIn() {
             DatabaseManager.shared.update(balance: self.balance, uid: user.uid)
-            self.delegate.updateView(balance: self.balance)
+            self.delegate.updateView(model: self.userModel ?? UserModel.empty())
         }
+        completion(selectedSector)
     }
 
     private func getBetVariant(for indexPath: IndexPath) -> BetVariant? {

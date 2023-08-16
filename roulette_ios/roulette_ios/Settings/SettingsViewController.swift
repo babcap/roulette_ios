@@ -18,12 +18,17 @@ class SettingsViewController: UIViewController {
 
     var viewModel: SettingsViewModel!
 
+    let cellSpacingHeight: CGFloat = 20
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.viewModel = SettingsViewModel()
         self.viewModel.delegate = self
+        
+        self.view.backgroundColor = .darkGray
 
+        self.setupAccountView(with: nil)
         self.setupTableView()
     }
 
@@ -36,14 +41,27 @@ class SettingsViewController: UIViewController {
         }
     }
 
+    private func setupLoginButton(isHidden: Bool) {
+        self.loginButton.isHidden = isHidden
+        self.loginButton.layer.cornerRadius = 12
+        self.loginButton.layer.borderColor = UIColor.yellow.cgColor
+        self.loginButton.layer.borderWidth = 3
+        self.loginButton.titleLabel?.text = "Login"
+        self.loginButton.tintColor = .cyan
+    }
+
     private func setupAccountView(with user: UserModel?) {
+        self.profileView.layer.cornerRadius = 12
+        self.profileView.layer.borderColor = UIColor.yellow.cgColor
+        self.profileView.layer.borderWidth = 3
         if let user = user {
-            self.loginButton.isHidden = true
+            self.setupLoginButton(isHidden: true)
+            self.profileView.isHidden = false
             self.profileNameLabel.text = user.name
             self.balanceLabel.text = "\(user.balance)"
         } else {
-            self.loginButton.isHidden = false
-            self.loginButton.titleLabel?.text = "Login"
+            self.setupLoginButton(isHidden: false)
+            self.profileView.isHidden = true
         }
     }
 
@@ -60,7 +78,7 @@ class SettingsViewController: UIViewController {
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.settings.count
+        return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,7 +86,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let item = self.viewModel.settings[indexPath.row]
+        let item = self.viewModel.settings[indexPath.section]
         cell.setup(with: item.title)
         return cell
     }
@@ -76,6 +94,20 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: false)
         self.viewModel.handleActionAt(indexPath)
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.viewModel.settings.count
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return cellSpacingHeight
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
     }
 }
 

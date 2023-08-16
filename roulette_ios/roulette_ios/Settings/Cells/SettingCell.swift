@@ -12,6 +12,14 @@ class SettingCell: UITableViewCell {
 
     static let reuseIdentifier = "SettingCell"
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        layer.cornerRadius = 12
+        layer.masksToBounds = true
+        layer.borderColor = UIColor.yellow.cgColor
+        layer.borderWidth = 3
+    }
+
     func setup(with title: String) {
         self.settingLabel.text = title
     }
