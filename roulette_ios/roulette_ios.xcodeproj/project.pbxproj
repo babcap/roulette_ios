@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E22B4742A8BAE8D00C70F6A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E22B4732A8BAE8D00C70F6A /* GoogleService-Info.plist */; };
+		8E22B4772A8BAF7B00C70F6A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8E22B4762A8BAF7B00C70F6A /* FirebaseAnalytics */; };
+		8E22B4792A8BAF7B00C70F6A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8E22B4782A8BAF7B00C70F6A /* FirebaseAuth */; };
+		8E22B47B2A8BAF7B00C70F6A /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 8E22B47A2A8BAF7B00C70F6A /* FirebaseDatabase */; };
+		8E22B47D2A8BAF7B00C70F6A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8E22B47C2A8BAF7B00C70F6A /* FirebaseFirestore */; };
+		8E22B47F2A8BC4D800C70F6A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E22B47E2A8BC4D800C70F6A /* SettingsViewController.swift */; };
+		8E22B4812A8BD13100C70F6A /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E22B4802A8BD13100C70F6A /* AuthenticationManager.swift */; };
+		8E22B4872A8BD50A00C70F6A /* SettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E22B4862A8BD50A00C70F6A /* SettingCell.xib */; };
+		8E22B4892A8BD51000C70F6A /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E22B4882A8BD51000C70F6A /* SettingCell.swift */; };
+		8E22B48C2A8BD60A00C70F6A /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E22B48B2A8BD60A00C70F6A /* SettingsViewModel.swift */; };
+		8E22B4912A8BE28C00C70F6A /* SKStoreReviewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E22B4902A8BE28C00C70F6A /* SKStoreReviewController+Extensions.swift */; };
+		8E22B4932A8C0F3D00C70F6A /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E22B4922A8C0F3D00C70F6A /* DatabaseManager.swift */; };
 		8ED6FBB32A8797A600F4C1AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6FBB22A8797A600F4C1AC /* AppDelegate.swift */; };
 		8ED6FBB52A8797A600F4C1AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6FBB42A8797A600F4C1AC /* SceneDelegate.swift */; };
 		8ED6FBB72A8797A600F4C1AC /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6FBB62A8797A600F4C1AC /* GameViewController.swift */; };
@@ -21,6 +33,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E22B4732A8BAE8D00C70F6A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8E22B47E2A8BC4D800C70F6A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		8E22B4802A8BD13100C70F6A /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		8E22B4862A8BD50A00C70F6A /* SettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCell.xib; sourceTree = "<group>"; };
+		8E22B4882A8BD51000C70F6A /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		8E22B48B2A8BD60A00C70F6A /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		8E22B4902A8BE28C00C70F6A /* SKStoreReviewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKStoreReviewController+Extensions.swift"; sourceTree = "<group>"; };
+		8E22B4922A8C0F3D00C70F6A /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		8ED6FBAF2A8797A600F4C1AC /* roulette_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = roulette_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED6FBB22A8797A600F4C1AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED6FBB42A8797A600F4C1AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,12 +61,53 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E22B47B2A8BAF7B00C70F6A /* FirebaseDatabase in Frameworks */,
+				8E22B47D2A8BAF7B00C70F6A /* FirebaseFirestore in Frameworks */,
+				8E22B4772A8BAF7B00C70F6A /* FirebaseAnalytics in Frameworks */,
+				8E22B4792A8BAF7B00C70F6A /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E22B48A2A8BD5E500C70F6A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8E22B4862A8BD50A00C70F6A /* SettingCell.xib */,
+				8E22B4882A8BD51000C70F6A /* SettingCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		8E22B48D2A8BD61100C70F6A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				8E22B47E2A8BC4D800C70F6A /* SettingsViewController.swift */,
+				8E22B48B2A8BD60A00C70F6A /* SettingsViewModel.swift */,
+				8E22B48A2A8BD5E500C70F6A /* Cells */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		8E22B48E2A8BD62300C70F6A /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				8ED6FBB62A8797A600F4C1AC /* GameViewController.swift */,
+				8ED6FBCF2A897B2900F4C1AC /* GameViewModel.swift */,
+				8E22B48F2A8BD63100C70F6A /* Cells */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		8E22B48F2A8BD63100C70F6A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8ED6FBC92A89399900F4C1AC /* DefaultBetCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		8ED6FBA62A8797A600F4C1AC = {
 			isa = PBXGroup;
 			children = (
@@ -68,16 +129,19 @@
 			children = (
 				8ED6FBB22A8797A600F4C1AC /* AppDelegate.swift */,
 				8ED6FBB42A8797A600F4C1AC /* SceneDelegate.swift */,
-				8ED6FBB62A8797A600F4C1AC /* GameViewController.swift */,
-				8ED6FBCF2A897B2900F4C1AC /* GameViewModel.swift */,
+				8E22B48E2A8BD62300C70F6A /* Game */,
+				8E22B48D2A8BD61100C70F6A /* Settings */,
 				8EF29F682A8AE05A009207CF /* Models.swift */,
-				8ED6FBC92A89399900F4C1AC /* DefaultBetCollectionViewCell.swift */,
 				8ED6FBCD2A89483B00F4C1AC /* CustomCollectionViewFlowLayout.swift */,
 				8EF29F662A8A99EB009207CF /* UIColor+Extensions.swift */,
+				8E22B4902A8BE28C00C70F6A /* SKStoreReviewController+Extensions.swift */,
+				8E22B4802A8BD13100C70F6A /* AuthenticationManager.swift */,
+				8E22B4922A8C0F3D00C70F6A /* DatabaseManager.swift */,
 				8ED6FBB82A8797A600F4C1AC /* Main.storyboard */,
 				8ED6FBBB2A8797A700F4C1AC /* Assets.xcassets */,
 				8ED6FBBD2A8797A700F4C1AC /* LaunchScreen.storyboard */,
 				8ED6FBC02A8797A700F4C1AC /* Info.plist */,
+				8E22B4732A8BAE8D00C70F6A /* GoogleService-Info.plist */,
 			);
 			path = roulette_ios;
 			sourceTree = "<group>";
@@ -99,6 +163,10 @@
 			);
 			name = roulette_ios;
 			packageProductDependencies = (
+				8E22B4762A8BAF7B00C70F6A /* FirebaseAnalytics */,
+				8E22B4782A8BAF7B00C70F6A /* FirebaseAuth */,
+				8E22B47A2A8BAF7B00C70F6A /* FirebaseDatabase */,
+				8E22B47C2A8BAF7B00C70F6A /* FirebaseFirestore */,
 			);
 			productName = roulette_ios;
 			productReference = 8ED6FBAF2A8797A600F4C1AC /* roulette_ios.app */;
@@ -130,6 +198,7 @@
 			mainGroup = 8ED6FBA62A8797A600F4C1AC;
 			packageReferences = (
 				8ED6FBC62A87996A00F4C1AC /* XCRemoteSwiftPackageReference "SimpleRoulette" */,
+				8E22B4752A8BAF7B00C70F6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 8ED6FBB02A8797A600F4C1AC /* Products */;
 			projectDirPath = "";
@@ -147,6 +216,8 @@
 			files = (
 				8ED6FBBF2A8797A700F4C1AC /* LaunchScreen.storyboard in Resources */,
 				8ED6FBBC2A8797A700F4C1AC /* Assets.xcassets in Resources */,
+				8E22B4742A8BAE8D00C70F6A /* GoogleService-Info.plist in Resources */,
+				8E22B4872A8BD50A00C70F6A /* SettingCell.xib in Resources */,
 				8ED6FBBA2A8797A600F4C1AC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -159,13 +230,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ED6FBD02A897B2900F4C1AC /* GameViewModel.swift in Sources */,
+				8E22B4912A8BE28C00C70F6A /* SKStoreReviewController+Extensions.swift in Sources */,
 				8ED6FBCA2A89399900F4C1AC /* DefaultBetCollectionViewCell.swift in Sources */,
+				8E22B4892A8BD51000C70F6A /* SettingCell.swift in Sources */,
 				8ED6FBB72A8797A600F4C1AC /* GameViewController.swift in Sources */,
+				8E22B4812A8BD13100C70F6A /* AuthenticationManager.swift in Sources */,
+				8E22B4932A8C0F3D00C70F6A /* DatabaseManager.swift in Sources */,
 				8EF29F692A8AE05A009207CF /* Models.swift in Sources */,
 				8ED6FBB32A8797A600F4C1AC /* AppDelegate.swift in Sources */,
 				8EF29F672A8A99EB009207CF /* UIColor+Extensions.swift in Sources */,
+				8E22B48C2A8BD60A00C70F6A /* SettingsViewModel.swift in Sources */,
 				8ED6FBCE2A89483B00F4C1AC /* CustomCollectionViewFlowLayout.swift in Sources */,
 				8ED6FBB52A8797A600F4C1AC /* SceneDelegate.swift in Sources */,
+				8E22B47F2A8BC4D800C70F6A /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,6 +462,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8E22B4752A8BAF7B00C70F6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 		8ED6FBC62A87996A00F4C1AC /* XCRemoteSwiftPackageReference "SimpleRoulette" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/fummicc1/SimpleRoulette.git";
@@ -394,6 +479,29 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8E22B4762A8BAF7B00C70F6A /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E22B4752A8BAF7B00C70F6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		8E22B4782A8BAF7B00C70F6A /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E22B4752A8BAF7B00C70F6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		8E22B47A2A8BAF7B00C70F6A /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E22B4752A8BAF7B00C70F6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		8E22B47C2A8BAF7B00C70F6A /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8E22B4752A8BAF7B00C70F6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8ED6FBA72A8797A600F4C1AC /* Project object */;
 }

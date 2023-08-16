@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingCell" rowHeight="132" id="JUE-dw-nK2" customClass="SettingCell" customModule="roulette_ios" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="391" height="132"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JUE-dw-nK2" id="2Wy-CQ-7vM">
+                <rect key="frame" x="0.0" y="0.0" width="391" height="132"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aa5-hc-pGt">
+                        <rect key="frame" x="16" y="30" width="359" height="72"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="Aa5-hc-pGt" secondAttribute="bottom" constant="30" id="CXt-Sx-Oai"/>
+                    <constraint firstItem="Aa5-hc-pGt" firstAttribute="leading" secondItem="2Wy-CQ-7vM" secondAttribute="leading" constant="16" id="EiO-vD-obl"/>
+                    <constraint firstItem="Aa5-hc-pGt" firstAttribute="top" secondItem="2Wy-CQ-7vM" secondAttribute="top" constant="30" id="Jid-vJ-yr0"/>
+                    <constraint firstAttribute="trailing" secondItem="Aa5-hc-pGt" secondAttribute="trailing" constant="16" id="iuu-JO-vvk"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="settingLabel" destination="Aa5-hc-pGt" id="ckp-Hp-eja"/>
+            </connections>
+            <point key="canvasLocation" x="138.1679389312977" y="24.647887323943664"/>
+        </tableViewCell>
+    </objects>
+</document>

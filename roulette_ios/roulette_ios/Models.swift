@@ -45,6 +45,12 @@ struct Bet {
     var amount: Int
 }
 
+struct UserModel: Encodable, Decodable {
+    var name = "Anonymus"
+    var uid: String
+    var balance: Int
+}
+
 struct BetVariant {
     let type: BetType
     let color: RouletteColor

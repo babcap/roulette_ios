@@ -21,10 +21,16 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.output.delegate = self
 
         self.setupStepperView()
         self.setupCollectionView()
         self.setupCollectionViewFlowLayout()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.output.updateBalance()
     }
 
     private func setupStepperView() {
@@ -42,7 +48,6 @@ class GameViewController: UIViewController {
 
     private func setupCollectionView() {
         self.collectionView.register(DefaultBetCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-//        self.collectionView.isScrollEnabled = false
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
     }
@@ -58,9 +63,10 @@ class GameViewController: UIViewController {
 
     @IBAction private func onStartButton(_ sender: Any) {
         guard let indexPath = self.selectedCellIndexPath else { return }
-        self.output.startGame(stepCount: Int(self.stepper.value), and: indexPath)
+        self.output.startGame(stepCount: Int(self.stepper.value), and: indexPath) { sector in
+            
+        }
     }
-    
 }
 
 extension GameViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -81,7 +87,7 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        self.selectedCellIndexPath = indexPath
     }
 }
 
@@ -91,5 +97,13 @@ extension GameViewController: UICollectionViewDelegateFlowLayout {
         let cellsAcross: CGFloat = 3
         let dim = (collectionView.bounds.width - (cellsAcross - 1)) / cellsAcross
         return CGSize(width: dim, height: collectionView.bounds.height/13)
+    }
+}
+
+extension GameViewController: GameViewModelDelegate {
+    func updateView(balance: Int) {
+        DispatchQueue.main.async {
+            self.betTitleLabel.text = "\(balance)"
+        }
     }
 }

@@ -6,10 +6,14 @@
 //
 
 import Foundation
-import UIKit
 
+protocol GameViewModelDelegate: NSObject {
+    func updateView(balance: Int)
+}
 
 class GameViewModel {
+    weak var delegate: GameViewModelDelegate!
+
     var balance: Int = 0
     let gameSectors = RouletteSector.sectorsArray
     
@@ -37,15 +41,31 @@ class GameViewModel {
         ]
         return [firstSection, secondSection, thirdSection, fourthSection]
     }()
-    
+
+    func updateBalance() {
+        if let user = AuthenticationManager.shared.isLoggedIn() {
+            DatabaseManager.shared.getUser(uid: user.uid) { userModel in
+                guard let userModel = userModel else { return }
+                self.balance = userModel.balance
+                self.delegate.updateView(balance: self.balance)
+            }
+        }
+    }
+
     func startGame(stepCount: Int, and indexPath: IndexPath, completion: (RouletteSector) -> Void) {
         guard var betVariant = self.getBetVariant(for: indexPath) else { return }
-        betVariant.amount = balance/10 * stepCount
+        let betAmount = balance/10 * stepCount
+        betVariant.amount = betAmount
         guard let selectedSector = self.gameSectors.randomElement() else {
             debugPrint("Error")
             return
         }
+        self.balance -= betAmount
         self.balance += self.handleWinning(for: selectedSector, betVariant: betVariant)
+        if let user = AuthenticationManager.shared.isLoggedIn() {
+            DatabaseManager.shared.update(balance: self.balance, uid: user.uid)
+            self.delegate.updateView(balance: self.balance)
+        }
     }
 
     private func getBetVariant(for indexPath: IndexPath) -> BetVariant? {
@@ -95,59 +115,4 @@ class GameViewModel {
         }
         return totalWinning
     }
-
-//    func takeBet(for type: BetType, with ) -> [Bet] {
-//        var bet: [Bet] = []
-//        var remainingBalance = balance
-//
-//        while remainingBalance > 0 {
-//            print("Your balance: \(remainingBalance)")
-//            let betAmountStep = remainingBalance / 10
-//
-//            let maxBetAmount = remainingBalance
-//            let allowedStep = maxBetAmount / 10
-//
-//            print("Enter your bet amount (Step: \(allowedStep), Max: \(maxBetAmount)):")
-//            guard let betAmount = takeBetAmount(maxAmount: maxBetAmount, step: allowedStep) else {
-//                print("Invalid bet amount.")
-//                continue
-//            }
-//
-//            bets.append(Bet(type: type, amount: betAmount))
-//            remainingBalance -= betAmount
-//        }
-//
-//        return bets
-//    }
-
-//    func playRoulette() {
-//
-//    while balance > 0 {
-//    if balance < 100 {
-//    balance += 100
-//    print("You've been granted 100 chips!")
-//    }
-//
-//    let bets = takeBet(balance: &balance)
-//    if bets.isEmpty {
-//    print("No bets placed. Exiting.")
-//    break
-//    }
-//
-//    let spunColor = getRandomSector()
-//    let totalWinnings = calculateWinnings(bets: bets, spunColor: spunColor)
-//
-//    balance += totalWinnings
-//
-//    if totalWinnings > 0 {
-//    print("Congratulations! You won \(totalWinnings) chips.")
-//    } else {
-//    print("Sorry, you lost.")
-//    }
-//
-//    print("Your balance: \(balance)")
-//    }
-//
-//    print("Game over. Your final balance: \(balance)")
-//    }
 }
